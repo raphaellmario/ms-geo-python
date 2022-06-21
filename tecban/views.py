@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from tecban.models import Terminal
 
-def post_list(request):
-    return render(request, 'tecban/post_list.html', {})
+
+from tecban.serializers import TerminalSerializer
+
+class TerminalViewSet(viewsets.ModelViewSet):
+  queryset = Terminal.objects.all()
+  serializer_class = TerminalSerializer
