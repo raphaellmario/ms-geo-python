@@ -1,10 +1,9 @@
-from rest_framework.routers import DefaultRouter
-
-from tecban.views import TerminalViewSet
+from django.urls import path
+from tecban.views import find_terminal, get_all_terminal
 
 app_name = 'tecban'
 
-router = DefaultRouter(trailing_slash=False)
-router.register(r'terminal', TerminalViewSet)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('tecban/find/<int:id>/', find_terminal, name='Find Terminal'),
+    path('tecban/all', get_all_terminal, name='Get All Terminal'),
+]
